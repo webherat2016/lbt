@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css自动编号</title>
+    <style>
+        body {
+            /* 计算器复位(重置) 第一个参数是计算器名称,第二个参数是编号起始值*/
+            counter-reset: bianhao 0;
+        }
+
+        h2:before {
+            /* 1.定义一个计数器,bianhao计算器名称 取标签名称,取类名)*/
+            counter-increment: bianhao;
+            /* 2.content内容区,counter()函数给计算器进行编号 */
+            content: counter(bianhao)".";
+        }
+        section{
+            counter-reset: bianhao2 0;
+            
+        }
+        h3::before{
+            counter-increment: bianhao2;
+            content: counter(bianhao)"."counter(bianhao2)".";
+        }
+
+        /* 1.除标题标签外,其他标签也可以编号 */
+        q{
+            quotes:'[' ']''{" "}'';
+        }
+        /* quotes属性只能应用到<q>短引用上,其他标签无效
+         */
+    </style>
+</head>
+
+<body>
+    <h2>第一项</h2>
+    <section>
+        <h3>第一项中第一项</h3>
+        <h3>第一项中第二项</h3>        
+    </section>
+    <h2>第二项</h2>
+
+    <q>我是一个段落,给我添加一个引号</q>
+    <q>论语</q>
+    <blochquote>我是长引用</blochquote>
+
+</body>
+
+</html>
